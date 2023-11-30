@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deemount/gobpmn/examples/small_process"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/core"
+	"github.com/deemount/gobpmnByExample/example"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/core"
 )
 
 // BpmnFactory ...
@@ -57,7 +57,7 @@ func NewBpmnFactory(opt ...BpmnFactoryOption) BpmnFactory {
 // when it fits to the correct expectations
 func (factory *bpmnFactory) set() {
 
-	factory.Repo = small_process.New().Build().Call()
+	factory.Repo = example.New().Build().Call()
 
 }
 

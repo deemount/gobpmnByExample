@@ -44,7 +44,6 @@ type PlaneRepository interface {
 	impl.IFBaseID
 	impl.IFBaseElement
 	SetAttrProcessElement(suffix string)
-	SetAttrCollaborationElement(suffix string)
 	SetShape(num int)
 	GetShape(num int) *Shape
 	SetEdge(num int)

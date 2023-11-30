@@ -28,7 +28,7 @@ var (
 	// bool
 	boolIsExecutable = "IsExecutable"
 
-	// methods (actually used in Builder.build only)
+	// method
 	MethodSetProcess = "SetProcess"
 	MethodSetDiagram = "SetDiagram"
 )

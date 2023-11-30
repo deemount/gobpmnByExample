@@ -3,8 +3,8 @@ package factory
 import (
 	"reflect"
 
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/core"
-	"github.com/deemount/gobpmnByExamples/pkg/utils"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/core"
+	"github.com/deemount/gobpmnByExample/pkg/utils"
 )
 
 // Reflect struct defines

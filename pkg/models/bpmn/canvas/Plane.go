@@ -15,7 +15,6 @@ func NewPlane() PlaneRepository {
 func (plane *Plane) SetID(typ string, suffix interface{}) {
 	switch typ {
 	case "plane":
-		//plane.ID = "BPMNPlane_" + strconv.FormatInt(num, 16)
 		plane.ID = fmt.Sprintf("BPMNPlane_%d", suffix)
 		break
 	}

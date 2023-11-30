@@ -9,13 +9,7 @@ func SetSequenceFlow(p DelegateParameter) {
 		p.T = "flow"
 	}
 
-	p.SF.SetID(p.T, p.H[0]) // set id with first hash
-	// Notice: A label must set for name of sequenceflow
-	if p.N != "" {
-		p.SF.SetName(p.N)
-		canvas.SetLabel(
-			canvas.DelegateParameter{E: p.ED, B: p.BS})
-	}
+	p.SF.SetID(p.T, p.H[0])         // set id with first hash
 	p.SF.SetSourceRef(p.ST, p.H[1]) // set source ref with second hash
 	p.SF.SetTargetRef(p.TT, p.H[2]) // set target ref with third hash
 	if p.ED != nil {

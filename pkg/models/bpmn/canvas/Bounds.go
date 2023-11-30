@@ -1,6 +1,6 @@
 package canvas
 
-import "github.com/deemount/gobpmnByExamples/pkg/models/bpmn/impl"
+import "github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
 
 // NewBounds ...
 func NewBounds() BoundsRepository {

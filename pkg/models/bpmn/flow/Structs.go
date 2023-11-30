@@ -1,8 +1,8 @@
 package flow
 
 import (
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/canvas"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/impl"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
 )
 
 // flow

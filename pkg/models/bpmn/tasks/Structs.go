@@ -1,10 +1,10 @@
 package tasks
 
 import (
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/canvas"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/flow"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/impl"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/marker"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/flow"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/marker"
 )
 
 // DelegateParameter ...

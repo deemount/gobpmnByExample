@@ -1,6 +1,6 @@
 package tasks
 
-import "github.com/deemount/gobpmn/models/bpmn/canvas"
+import "github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
 
 // SetTask ...
 func SetTask(p DelegateParameter) {

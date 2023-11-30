@@ -1,10 +1,10 @@
 package process
 
 import (
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/events"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/flow"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/impl"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/tasks"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/events"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/flow"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/tasks"
 )
 
 // Process ...

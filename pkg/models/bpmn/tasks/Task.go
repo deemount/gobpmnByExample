@@ -3,8 +3,8 @@ package tasks
 import (
 	"fmt"
 
-	"github.com/deemount/gobpmn/models/bpmn/impl"
-	"github.com/deemount/gobpmn/models/bpmn/marker"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/marker"
 )
 
 // NewTask ...

@@ -1,6 +1,6 @@
 package events
 
-import "github.com/deemount/gobpmnByExamples/pkg/models/bpmn/events/elements"
+import "github.com/deemount/gobpmnByExample/pkg/models/bpmn/events/elements"
 
 type END_EVENT_PTR *elements.EndEvent
 type START_EVENT_PTR *elements.StartEvent

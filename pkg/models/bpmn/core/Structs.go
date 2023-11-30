@@ -3,8 +3,8 @@ package core
 import (
 	"encoding/xml"
 
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/canvas"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/process"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/process"
 )
 
 // DefinitionsBaseElements ...

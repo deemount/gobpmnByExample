@@ -3,10 +3,10 @@ package core
 import (
 	"fmt"
 
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/canvas"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/impl"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/process"
-	"github.com/deemount/gobpmnByExamples/pkg/utils"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/process"
+	"github.com/deemount/gobpmnByExample/pkg/utils"
 )
 
 var (
@@ -93,38 +93,20 @@ func (definitions *Definitions) SetMainElements(num int) {
 	definitions.SetDiagram(1)
 }
 
-/*
- * Default Getters
- */
-
-/* Attributes */
-
-/** BPMN **/
-
 // GetID ...
 func (definitions Definitions) GetID() impl.STR_PTR {
 	return &definitions.ID
 }
-
-/* Elements */
-
-/** BPMN **/
 
 // GetProcess ...
 func (definitions Definitions) GetProcess(num int) process.PROCESS_PTR {
 	return &definitions.Process[num]
 }
 
-/** BPMNDI **/
-
 // SetDiagram ...
 func (definitions Definitions) GetDiagram(num int) canvas.DIAGRAM_PTR {
 	return &definitions.Diagram[num]
 }
-
-/*
- * Default String
- */
 
 // String ...
 func (definitions Definitions) String() string {

@@ -1,8 +1,8 @@
 package elements
 
 import (
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/impl"
-	"github.com/deemount/gobpmnByExamples/pkg/models/bpmn/marker"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/impl"
+	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/marker"
 )
 
 // EndEventRepository ...

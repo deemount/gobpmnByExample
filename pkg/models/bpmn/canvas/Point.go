@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/deemount/gobpmnByExamples/pkg/utils"
+	"github.com/deemount/gobpmnByExample/pkg/utils"
 )
 
 // Point ...

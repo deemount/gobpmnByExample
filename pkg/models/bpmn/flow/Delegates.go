@@ -1,6 +1,6 @@
 package flow
 
-import "github.com/deemount/gobpmnByExamples/pkg/models/bpmn/canvas"
+import "github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
 
 // SetSequenceFlow ...
 func SetSequenceFlow(p DelegateParameter) {

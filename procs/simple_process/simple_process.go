@@ -1,7 +1,7 @@
-package example
+package simple_process
 
 import (
-	"github.com/deemount/gobpmnByExample/pkg/builder"
+	builder "github.com/deemount/gobpmnByExample/pkg/builder"
 	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/canvas"
 	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/core"
 	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/events/elements"
@@ -9,6 +9,12 @@ import (
 	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/process"
 	"github.com/deemount/gobpmnByExample/pkg/models/bpmn/tasks"
 )
+
+// Builder ...
+var Builder builder.Builder
+
+// Proxy ...
+type Proxy interface{ Build() Process }
 
 // Process ...
 type Process struct {
@@ -137,8 +143,6 @@ func (p *Process) setDiagram() {
 	plane.SetID("plane", n)
 	plane.SetElement("process", p.Process.Suffix)
 }
-
-/**** Default Setter/Getter ****/
 
 func (p *Process) attributes()              { p.Def.SetDefaultAttributes() }
 func (p Process) process() *process.Process { return p.Def.GetProcess(0) }

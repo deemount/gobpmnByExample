@@ -116,15 +116,6 @@ func (ref Reflect) boolType() {
 
 }
 
-// countWords ...
-func (ref Reflect) countWords() {
-	l := 0
-	length := len(ref.Words)
-	for i := 0; i < length; i++ {
-		l += len(ref.Words[i])
-	}
-}
-
 // isNotDefinitions ...
 func (ref *Reflect) isDefinitions(field reflect.StructField) bool {
 	return core.IsDefinitions(field)

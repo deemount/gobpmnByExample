@@ -35,7 +35,7 @@ func (h *Builder) Hash() string {
 // It also setup reflected fields with boolean type and checks out the configuration by wording
 func (h *Builder) Inject(p interface{}) interface{} { return h.inject(p) }
 
-// Create receives the definitions repository by the app in the interface {} p argument
+// Build receives the definitions repository by the app in the interface {} p argument
 // and calls the main elements to set the maps, including process parameters
 // n of process.
 func (h *Builder) Build(p interface{}) { h.build(p) }
@@ -79,88 +79,6 @@ func (h *Builder) inject(p interface{}) interface{} {
 
 	ref := NewReflect(p)
 	ref.Interface().New().Maps().Reflection()
-
-	// anonymous field are reflected
-	if ref.hasAnonymous() {
-
-		length := len(ref.Anonym)
-
-		// create processMap, anonymMap and hashMap
-		processMap := make(map[string]map[int][]interface{})
-		anonymMap := make(map[int][]interface{}, length)
-		hashMap := make(map[string][]interface{}, length)
-
-		// walk through the map with names of anonymous fields
-		for index, field := range ref.Anonym {
-
-			// get the reflected value of field
-			n := ref.Temporary.FieldByName(field)
-
-			// create the field map
-			fieldMap := make(map[int][]interface{}, n.NumField())
-			// create the hash slice
-			hashSlice := make([]interface{}, n.NumField())
-
-			// append to anonymMap the name of anonymous field
-			anonymMap[index] = append(anonymMap[index], n.Type().Name())
-
-			// walk through the values of fields assigned to the interface {}
-			for i := 0; i < n.NumField(); i++ {
-
-				// get the name of field by index of reflected value above and
-				// append to fieldMap the name of field by index
-				name := n.Type().Field(i).Name
-				fieldMap[i] = append(fieldMap[i], name)
-
-				// switch by kind of field value by index of reflected value above and
-				// assign the hash value to the hash slice by index of field value above
-				switch n.Field(i).Kind() {
-
-				// kind is a bool
-				case reflect.Bool:
-
-					// only the first field, which IsExecutable is set to true,
-					// means, only one process in a collaboration can be executed at runtime
-					if strings.Contains(name, boolIsExecutable) && i == 0 {
-						n.Field(0).SetBool(true)
-						hashSlice[i] = bool(true)
-					} else {
-						hashSlice[i] = bool(false)
-					}
-
-					break
-
-				// kind is a struct
-				case reflect.Struct:
-
-					h.countStartEvent(name) // counts startevents
-					h.countTask(name)       // counts tasks
-					h.countEndEvent(name)   // counts endevent
-
-					// Injecting by each index of the given process structs
-					// e.g. starts with customer support, customer,
-					strHash := fmt.Sprintf("%s", n.Field(i).FieldByName("Suffix"))
-					if strHash == "" {
-						hash, _ := h.hash() // generate hash value
-						hashSlice[i] = hash.Suffix
-						n.Field(i).Set(reflect.ValueOf(hash)) // inject the field
-					}
-
-					if i+1 < n.NumField() {
-						nexthash, _ := h.hash() // generate hash value
-						hashSlice[i+1] = nexthash.Suffix
-						n.Field(i + 1).Set(reflect.ValueOf(nexthash)) // inject the field
-					}
-
-					break
-
-				}
-
-			}
-			mergeStringSliceToMap(hashMap, n.Type().Name(), hashSlice)
-			processMap[n.Type().Name()] = MergeMaps(anonymMap, fieldMap)
-		}
-	}
 
 	// anonymous field aren't reflected
 	if ref.hasNotAnonymous() {
@@ -209,7 +127,6 @@ func (h *Builder) inject(p interface{}) interface{} {
 	}
 
 	p = ref.Set()
-	ref.countWords()
 
 	return p
 
@@ -268,24 +185,3 @@ func (h *Builder) isZero() bool { return h.Suffix == "" }
 
 // isUnknown ...
 func (h *Builder) isUnknown(field string) bool { return true }
-
-func MergeMaps[M ~map[K]V, K comparable, V any](src ...M) M {
-	merged := make(M)
-	for _, m := range src {
-		for k, v := range m {
-			merged[k] = v
-		}
-	}
-	return merged
-}
-
-func mergeStringSliceToMap(m map[string][]interface{}, k string, v []interface{}) {
-	if m[k] == nil {
-		m[k] = make([]interface{}, len(v))
-		for i, s := range v {
-			m[k][i] = interface{}(s)
-		}
-	} else {
-		m[k] = append(m[k], v...)
-	}
-}

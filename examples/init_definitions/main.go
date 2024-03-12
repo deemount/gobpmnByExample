@@ -19,6 +19,8 @@ import (
 var hash gobpmn_hash.Injection
 
 type (
+
+	// Proxy ...
 	Proxy interface {
 		Build() ExampleProcess
 	}
@@ -32,7 +34,8 @@ type (
 
 	// Pool
 	Pool struct {
-		TenantProcess gobpmn_hash.Injection
+		TenantIsExecutable bool
+		TenantProcess      gobpmn_hash.Injection
 	}
 
 	// Tenant
@@ -46,7 +49,7 @@ func New() Proxy {
 	var count gobpmn_count.Quantities
 
 	c := count.In(ExampleProcess{})
-	log.Printf("main.go: %+v", &c.Process)
+	log.Printf("main.go: %+v", c)
 
 	p := hash.Inject(ExampleProcess{}).(ExampleProcess)
 	log.Printf("main.go: %+v", p)
@@ -60,6 +63,7 @@ func New() Proxy {
 // Build sets the elements
 func (p ExampleProcess) Build() ExampleProcess {
 	p.attributes()
+	p.setProcess()
 	p.tenantProcess().SetStartEvent(1)
 	return p
 }
@@ -69,12 +73,20 @@ func (p ExampleProcess) Call() core.DefinitionsRepository {
 	return p.Def
 }
 
+// setProcess ...
+func (p *ExampleProcess) setProcess() {
+	p.tenantProcess().SetID("process", p.TenantProcess.Suffix)
+	p.tenantProcess().SetIsExecutable(p.TenantIsExecutable)
+}
+
 // process returns the first process
 func (p ExampleProcess) tenantProcess() *process.Process {
 	return p.Def.GetProcess(0)
 }
 
-func (p *ExampleProcess) attributes() { p.Def.SetDefaultAttributes() }
+func (p *ExampleProcess) attributes() {
+	p.Def.SetDefaultAttributes()
+}
 
 /*
  * @Main
@@ -82,10 +94,11 @@ func (p *ExampleProcess) attributes() { p.Def.SetDefaultAttributes() }
 
 // Main ...
 func main() {
-	builder := New().Build().Call()
-	log.Printf("main.go: %+v", builder)
 
 	var err error
+
+	builder := New().Build().Call()
+	log.Printf("main.go: %+v", builder)
 
 	// marshal xml to byte slice
 	b, _ := xml.MarshalIndent(&builder, " ", "  ")

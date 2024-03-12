@@ -1,7 +1,7 @@
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040 h1:vMsKGBWBsdy2UEDaOO+yCG4RLjYVyoLNARopS8o1/XM=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040/go.mod h1:gtlVIb4tlWVLxCZmme7ORdXFpbeVajRXKCI4KtaQ0l0=
-github.com/deemount/gobpmnHash v0.0.0-20240312181559-21f1701f01e8 h1:LW564n3XkKkYojPGSe7e5l0TxUscuP6OYZxxcSB9kYw=
-github.com/deemount/gobpmnHash v0.0.0-20240312181559-21f1701f01e8/go.mod h1:OXXe8NaxMtfeDVH2/IgpYSJPm2TnzGbQnl1tzClGwLs=
+github.com/deemount/gobpmnHash v0.0.0-20240312182511-93c4d72555f8 h1:QOWi44mDQZhzrBefOn9e9r5x4MmiEtwDBLDLDIv6/eo=
+github.com/deemount/gobpmnHash v0.0.0-20240312182511-93c4d72555f8/go.mod h1:OXXe8NaxMtfeDVH2/IgpYSJPm2TnzGbQnl1tzClGwLs=
 github.com/deemount/gobpmnModels v0.0.0-20240311093948-b01f02056cfd h1:oIgofljbjfA5zD4oVriqu6Asp0BOToPwf8G0MNmFleM=
 github.com/deemount/gobpmnModels v0.0.0-20240311093948-b01f02056cfd/go.mod h1:8HkFs9SEoVS0iCV/f6arOQesRWxSnjSO6m4e5Bk1S04=
 github.com/deemount/gobpmnReflection v0.0.0-20240312074456-8746db163823 h1:I9O9SXz0sHqwDdZOso8frhpw2wPaiAG+SioKn/jLXFY=

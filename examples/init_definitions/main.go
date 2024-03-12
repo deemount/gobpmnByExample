@@ -62,7 +62,6 @@ func New() Proxy {
 
 // Build sets the elements
 func (p ExampleProcess) Build() ExampleProcess {
-	p.attributes()
 	p.setProcess()
 	p.tenantProcess().SetStartEvent(1)
 	return p
@@ -82,10 +81,6 @@ func (p *ExampleProcess) setProcess() {
 // process returns the first process
 func (p ExampleProcess) tenantProcess() *process.Process {
 	return p.Def.GetProcess(0)
-}
-
-func (p *ExampleProcess) attributes() {
-	p.Def.SetDefaultAttributes()
 }
 
 /*

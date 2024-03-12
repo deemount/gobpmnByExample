@@ -17,7 +17,6 @@ import (
  */
 
 var hash gobpmn_hash.Injection
-var count gobpmn_count.Quantities
 
 type (
 	Proxy interface {
@@ -44,8 +43,10 @@ type (
 
 func New() Proxy {
 
+	var count gobpmn_count.Quantities
+
 	c := count.In(ExampleProcess{})
-	log.Printf("main.go: %+v", c)
+	log.Printf("main.go: %+v", &c.Process)
 
 	p := hash.Inject(ExampleProcess{}).(ExampleProcess)
 	log.Printf("main.go: %+v", p)

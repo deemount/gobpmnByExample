@@ -1,15 +1,13 @@
 package main
 
 import (
-	"encoding/xml"
-	"fmt"
 	"log"
-	"os"
 
 	gobpmn_builder "github.com/deemount/gobpmnBuilder"
 	gobpmn_counter "github.com/deemount/gobpmnCounter"
 	gobpmn_hash "github.com/deemount/gobpmnHash"
 	"github.com/deemount/gobpmnModels/pkg/core"
+	"github.com/deemount/gobpmnModels/pkg/events/elements"
 	"github.com/deemount/gobpmnModels/pkg/process"
 )
 
@@ -67,6 +65,7 @@ func New() Proxy {
 func (p ExampleProcess) Build() ExampleProcess {
 	p.setProcess()
 	p.tenantProcess().SetStartEvent(1)
+	p.SetTenantStartEventID()
 	return p
 }
 
@@ -81,9 +80,17 @@ func (p *ExampleProcess) setProcess() {
 	p.tenantProcess().SetIsExecutable(p.TenantIsExecutable)
 }
 
+func (p *ExampleProcess) SetTenantStartEventID() {
+	p.tenantStartEvent().SetID("startevent", p.TenantStartEvent.Suffix)
+}
+
 // process returns the first process
 func (p ExampleProcess) tenantProcess() *process.Process {
 	return p.Def.GetProcess(0)
+}
+
+func (p ExampleProcess) tenantStartEvent() *elements.StartEvent {
+	return p.tenantProcess().GetStartEvent(0)
 }
 
 /*
@@ -93,31 +100,35 @@ func (p ExampleProcess) tenantProcess() *process.Process {
 // Main ...
 func main() {
 
-	var err error
-
 	exampleProcess := New().Build().Call()
 	log.Printf("main.go: %+v", exampleProcess)
 
-	// marshal xml to byte slice
-	b, _ := xml.MarshalIndent(&exampleProcess, " ", "  ")
+	builder := gobpmn_builder.New()
+	builder.SetDefinitionsByArg(exampleProcess)
+	builder.Build()
 
-	// create .bpmn file
-	f, err := os.Create("../../files/bpmn/test.bpmn")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
+	/*
+		// marshal xml to byte slice
+		b, _ := xml.MarshalIndent(&exampleProcess, " ", "  ")
 
-	// add xml header
-	w := []byte(fmt.Sprintf("%v", xml.Header+string(b)))
+		// create .bpmn file
+		f, err := os.Create("../../files/bpmn/test.bpmn")
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer f.Close()
 
-	// write bytes to file
-	_, err = f.Write(w)
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = f.Sync()
-	if err != nil {
-		log.Fatal(err)
-	}
+		// add xml header
+		w := []byte(fmt.Sprintf("%v", xml.Header+string(b)))
+
+		// write bytes to file
+		_, err = f.Write(w)
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = f.Sync()
+		if err != nil {
+			log.Fatal(err)
+		}
+	*/
 }

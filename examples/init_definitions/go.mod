@@ -3,7 +3,7 @@ module github.com/deemount/gobpmnByExample/examples/init_definitions
 go 1.21.7
 
 require (
-	github.com/deemount/gobpmnBuilder v0.0.0-20240313101636-302e82c2e787
+	github.com/deemount/gobpmnBuilder v0.0.0-20240313113134-46ac5fc6c06a
 	github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040
 	github.com/deemount/gobpmnHash v0.0.0-20240313080230-626325223319
 	github.com/deemount/gobpmnModels v0.0.0-20240229105207-e3c75acd45e8

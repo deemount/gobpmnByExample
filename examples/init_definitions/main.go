@@ -6,7 +6,8 @@ import (
 	"log"
 	"os"
 
-	gobpmn_count "github.com/deemount/gobpmnCounter"
+	gobpmn_builder "github.com/deemount/gobpmnBuilder"
+	gobpmn_counter "github.com/deemount/gobpmnCounter"
 	gobpmn_hash "github.com/deemount/gobpmnHash"
 	"github.com/deemount/gobpmnModels/pkg/core"
 	"github.com/deemount/gobpmnModels/pkg/process"
@@ -16,6 +17,8 @@ import (
  * @ExampleProcess
  */
 
+var build gobpmn_builder.Builder
+var count gobpmn_counter.Quantities
 var hash gobpmn_hash.Injection
 
 type (
@@ -46,8 +49,6 @@ type (
 
 func New() Proxy {
 
-	var count gobpmn_count.Quantities
-
 	c := count.In(ExampleProcess{})
 	log.Printf("main.go: %+v", c)
 
@@ -55,7 +56,9 @@ func New() Proxy {
 	log.Printf("main.go: %+v", p)
 
 	p.Def = core.NewDefinitions()
-	hash.Create(p.Def)
+	p.Def.SetDefaultAttributes()
+
+	build.Defaults(p.Def, c)
 
 	return &p
 }

@@ -10,6 +10,6 @@ require (
 )
 
 require (
-	github.com/deemount/gobpmnReflection v0.0.0-20240312074456-8746db163823 // indirect
-	github.com/deemount/gobpmnTypes v0.0.0-20240228122426-16d080c21cc0 // indirect
+	github.com/deemount/gobpmnReflection v0.0.0-20240312080001-0601dc0824b6 // indirect
+	github.com/deemount/gobpmnTypes v0.0.0-20240311093047-4625a7520eed // indirect
 )

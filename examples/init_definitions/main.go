@@ -95,11 +95,11 @@ func main() {
 
 	var err error
 
-	builder := New().Build().Call()
-	log.Printf("main.go: %+v", builder)
+	exampleProcess := New().Build().Call()
+	log.Printf("main.go: %+v", exampleProcess)
 
 	// marshal xml to byte slice
-	b, _ := xml.MarshalIndent(&builder, " ", "  ")
+	b, _ := xml.MarshalIndent(&exampleProcess, " ", "  ")
 
 	// create .bpmn file
 	f, err := os.Create("../../files/bpmn/test.bpmn")

@@ -1,5 +1,5 @@
-github.com/deemount/gobpmnBuilder v0.0.0-20240313145839-a582fac8e7d3 h1:aX2C5bhVIhLcG2rqgaZ/pTsPdCiln0aNnD0rAG0Aif8=
-github.com/deemount/gobpmnBuilder v0.0.0-20240313145839-a582fac8e7d3/go.mod h1:DUVaLj7plX8G9obAHCWTBNZ1QC+M7L6BiPanJs/e80s=
+github.com/deemount/gobpmnBuilder v0.0.0-20240313153313-9c0dc38240b4 h1:7LfSnCo0biDlyzr1IUJspcfC5zaCFJX0EHDUyA+fOEg=
+github.com/deemount/gobpmnBuilder v0.0.0-20240313153313-9c0dc38240b4/go.mod h1:A28EdTSLBPrKuVlIRGX6FqgYv+MKd3puvvf98OS4tqM=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040 h1:vMsKGBWBsdy2UEDaOO+yCG4RLjYVyoLNARopS8o1/XM=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040/go.mod h1:gtlVIb4tlWVLxCZmme7ORdXFpbeVajRXKCI4KtaQ0l0=
 github.com/deemount/gobpmnHash v0.0.0-20240313080230-626325223319 h1:Qz5zjzRmBGggUaWS01MT2ny5Nxap0WNy9djz5hhIZKk=

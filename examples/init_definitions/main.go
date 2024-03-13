@@ -63,9 +63,9 @@ func New() Proxy {
 
 // Build sets the elements
 func (p ExampleProcess) Build() ExampleProcess {
-	p.setProcess()
+	p.setTenantProcessArgs()
 	p.tenantProcess().SetStartEvent(1)
-	p.SetTenantStartEventID()
+	p.setTenantStartEventID()
 	return p
 }
 
@@ -75,16 +75,15 @@ func (p ExampleProcess) Call() core.DefinitionsRepository {
 }
 
 // setProcess ...
-func (p *ExampleProcess) setProcess() {
+func (p *ExampleProcess) setTenantProcessArgs() {
 	p.tenantProcess().SetID("process", p.TenantProcess.Suffix)
 	p.tenantProcess().SetIsExecutable(p.TenantIsExecutable)
 }
 
-func (p *ExampleProcess) SetTenantStartEventID() {
+func (p *ExampleProcess) setTenantStartEventID() {
 	p.tenantStartEvent().SetID("startevent", p.TenantStartEvent.Suffix)
 }
 
-// process returns the first process
 func (p ExampleProcess) tenantProcess() *process.Process {
 	return p.Def.GetProcess(0)
 }
@@ -107,28 +106,4 @@ func main() {
 	builder.SetDefinitionsByArg(exampleProcess)
 	builder.Build()
 
-	/*
-		// marshal xml to byte slice
-		b, _ := xml.MarshalIndent(&exampleProcess, " ", "  ")
-
-		// create .bpmn file
-		f, err := os.Create("../../files/bpmn/test.bpmn")
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer f.Close()
-
-		// add xml header
-		w := []byte(fmt.Sprintf("%v", xml.Header+string(b)))
-
-		// write bytes to file
-		_, err = f.Write(w)
-		if err != nil {
-			log.Fatal(err)
-		}
-		err = f.Sync()
-		if err != nil {
-			log.Fatal(err)
-		}
-	*/
 }

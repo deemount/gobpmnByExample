@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	gobpmn_builder "github.com/deemount/gobpmnBuilder"
 	gobpmn_counter "github.com/deemount/gobpmnCounter"
 	gobpmn_hash "github.com/deemount/gobpmnHash"
@@ -15,9 +13,11 @@ import (
  * @ExampleProcess
  */
 
-var build gobpmn_builder.Builder
-var count gobpmn_counter.Quantities
-var hash gobpmn_hash.Injection
+var (
+	build gobpmn_builder.Builder
+	count gobpmn_counter.Quantities
+	hash  gobpmn_hash.Injection
+)
 
 type (
 
@@ -45,13 +45,11 @@ type (
 	}
 )
 
+// New ...
 func New() Proxy {
 
 	c := count.In(ExampleProcess{})
-	log.Printf("main.go: %+v", c)
-
 	p := hash.Inject(ExampleProcess{}).(ExampleProcess)
-	log.Printf("main.go: %+v", p)
 
 	p.Def = core.NewDefinitions()
 	p.Def.SetDefaultAttributes()
@@ -61,7 +59,7 @@ func New() Proxy {
 	return &p
 }
 
-// Build sets the elements
+// Build ...
 func (p ExampleProcess) Build() ExampleProcess {
 	p.setTenantProcessArgs()
 	p.tenantProcess().SetStartEvent(1)
@@ -69,7 +67,7 @@ func (p ExampleProcess) Build() ExampleProcess {
 	return p
 }
 
-// Call returns the definitions reference ...
+// Call ...
 func (p ExampleProcess) Call() core.DefinitionsRepository {
 	return p.Def
 }
@@ -80,14 +78,17 @@ func (p *ExampleProcess) setTenantProcessArgs() {
 	p.tenantProcess().SetIsExecutable(p.TenantIsExecutable)
 }
 
+// setTenantStartEventID ...
 func (p *ExampleProcess) setTenantStartEventID() {
 	p.tenantStartEvent().SetID("startevent", p.TenantStartEvent.Suffix)
 }
 
+// tenantProcess ...
 func (p ExampleProcess) tenantProcess() *process.Process {
 	return p.Def.GetProcess(0)
 }
 
+// tenantStartEvent ...
 func (p ExampleProcess) tenantStartEvent() *elements.StartEvent {
 	return p.tenantProcess().GetStartEvent(0)
 }
@@ -100,8 +101,6 @@ func (p ExampleProcess) tenantStartEvent() *elements.StartEvent {
 func main() {
 
 	exampleProcess := New().Build().Call()
-	log.Printf("main.go: %+v", exampleProcess)
-
 	builder := gobpmn_builder.New()
 	builder.SetDefinitionsByArg(exampleProcess)
 	builder.Build()

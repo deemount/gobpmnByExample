@@ -13,12 +13,14 @@ import (
  * @ExampleProcess
  */
 
+// Global variables
 var (
 	build gobpmn_builder.Builder
 	count gobpmn_counter.Quantities
 	hash  gobpmn_hash.Injection
 )
 
+// Structure
 type (
 
 	// Proxy ...
@@ -45,6 +47,10 @@ type (
 	}
 )
 
+/*
+ * @Initiate
+ */
+
 // New ...
 func New() Proxy {
 
@@ -56,8 +62,12 @@ func New() Proxy {
 
 	build.Defaults(p.Def, c)
 
-	return &p
+	return p
 }
+
+/*
+ * @Global Methods
+ */
 
 // Build ...
 func (p ExampleProcess) Build() ExampleProcess {
@@ -71,6 +81,10 @@ func (p ExampleProcess) Build() ExampleProcess {
 func (p ExampleProcess) Call() core.DefinitionsRepository {
 	return p.Def
 }
+
+/*
+ * @Local Methods
+ */
 
 // setProcess ...
 func (p *ExampleProcess) setTenantProcessArgs() {

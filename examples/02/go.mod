@@ -3,10 +3,10 @@ module github.com/deemount/gobpmnByExample/examples/02
 go 1.21.7
 
 require (
-	github.com/deemount/gobpmnBuilder v0.0.0-20240315111814-b114d4d799fd
+	github.com/deemount/gobpmnBuilder v0.0.0-20240316083355-5dfdbda2bf8a
 	github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040
 	github.com/deemount/gobpmnHash v0.0.0-20240315111928-57ec04ea2163
-	github.com/deemount/gobpmnModels v0.0.0-20240315195348-76e2d8110fe8
+	github.com/deemount/gobpmnModels v0.0.0-20240316085912-7831ff39ffa4
 )
 
 require (

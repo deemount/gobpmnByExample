@@ -27,14 +27,14 @@ type (
 
 	// ExampleProcess ...
 	ExampleProcess struct {
-		Def                  core.DefinitionsRepository
-		IsExecutable         bool
-		TenantProcess        gobpmn_hash.Injection
-		TenantStartEvent     gobpmn_hash.Injection
-		FromTenantStartEvent gobpmn_hash.Injection
-		TenantTask           gobpmn_hash.Injection
-		FromTenantTask       gobpmn_hash.Injection
-		TenantEndEvent       gobpmn_hash.Injection
+		Def            core.DefinitionsRepository
+		IsExecutable   bool
+		Process        gobpmn_hash.Injection
+		StartEvent     gobpmn_hash.Injection
+		FromStartEvent gobpmn_hash.Injection
+		Task           gobpmn_hash.Injection
+		FromTask       gobpmn_hash.Injection
+		EndEvent       gobpmn_hash.Injection
 	}
 )
 
@@ -47,8 +47,6 @@ func New() Proxy {
 
 	c := count.In(ExampleProcess{})
 	p := hash.Inject(ExampleProcess{}).(ExampleProcess)
-
-	//log.Printf("ExampleProcess: %+v\n", c)
 
 	p.Def = core.NewDefinitions()
 	p.Def.SetDefaultAttributes()
@@ -66,7 +64,7 @@ func New() Proxy {
 func (p ExampleProcess) Build() ExampleProcess {
 	p.elements()
 	p.attributes()
-	p.setTenantProcessArgs()
+	p.setProcess()
 	p.setStartEvent()
 	p.setTask()
 	p.setEndEvent()
@@ -82,83 +80,90 @@ func (p ExampleProcess) Call() core.DefinitionsRepository {
  * @Local Methods
  */
 
-// elements ...
-func (p *ExampleProcess) elements() {
-	p.tenantProcess().SetStartEvent(1)
-	p.tenantProcess().SetTask(1)
-	p.tenantProcess().SetEndEvent(1)
-	p.tenantProcess().SetSequenceFlow(2)
+// attributes ...
+func (p *ExampleProcess) attributes() {
+	p.Def.SetDefaultAttributes()
 }
 
-// setTenantProcess ...
-func (p *ExampleProcess) setTenantProcessArgs() {
-	p.tenantProcess().SetID("process", p.TenantProcess.Suffix)
-	p.tenantProcess().SetIsExecutable(p.IsExecutable)
+// elements ...
+func (p *ExampleProcess) elements() {
+	p.process().SetStartEvent(1)
+	p.process().SetTask(1)
+	p.process().SetEndEvent(1)
+	p.process().SetSequenceFlow(2)
+}
+
+/****************************************************************************************/
+
+func (p ExampleProcess) process() *process.Process {
+	return p.Def.GetProcess(0)
+}
+
+func (p ExampleProcess) startEvent() *elements.StartEvent {
+	return p.process().GetStartEvent(0)
+}
+
+func (p ExampleProcess) task() *tasks.Task {
+	return p.process().GetTask(0)
+}
+
+func (p ExampleProcess) endEvent() *elements.EndEvent {
+	return p.process().GetEndEvent(0)
+}
+
+/****************************************************************************************/
+
+// setProcess ...
+func (p *ExampleProcess) setProcess() {
+	p.process().SetID("process", p.Process.Suffix)
+	p.process().SetIsExecutable(p.IsExecutable)
 }
 
 // setStartEvent ...
 func (p *ExampleProcess) setStartEvent() {
-	el := p.tenantStartEvent()
-	el.SetID("startevent", p.TenantStartEvent.Suffix)
+	el := p.startEvent()
+	el.SetID("startevent", p.StartEvent.Suffix)
 	el.SetName("Begin of Process")
 	el.SetOutgoing(1)
-	el.GetOutgoing(0).SetFlow(p.TenantTask.Suffix)
+	el.GetOutgoing(0).SetFlow(p.Task.Suffix)
 	p.fromStartEvent()
 }
 
 // fromStartEvent ...
 func (p *ExampleProcess) fromStartEvent() {
-	el := p.tenantProcess().GetSequenceFlow(0)
-	el.SetID("flow", p.FromTenantStartEvent.Suffix)
-	el.SetSourceRef("startevent", p.TenantStartEvent.Suffix)
-	el.SetTargetRef("activity", p.TenantTask.Suffix)
+	el := p.process().GetSequenceFlow(0)
+	el.SetID("flow", p.FromStartEvent.Suffix)
+	el.SetSourceRef("startevent", p.StartEvent.Suffix)
+	el.SetTargetRef("activity", p.Task.Suffix)
 }
 
 // setTask ...
 func (p *ExampleProcess) setTask() {
-	el := p.tenantTask()
-	el.SetID("activity", p.TenantTask.Suffix)
+	el := p.task()
+	el.SetID("activity", p.Task.Suffix)
 	el.SetName("Task")
 	el.SetIncoming(1)
-	el.GetIncoming(0).SetFlow(p.FromTenantStartEvent.Suffix)
+	el.GetIncoming(0).SetFlow(p.FromStartEvent.Suffix)
 	el.SetOutgoing(1)
-	el.GetOutgoing(0).SetFlow(p.TenantEndEvent.Suffix)
+	el.GetOutgoing(0).SetFlow(p.EndEvent.Suffix)
 	p.fromTask()
 }
 
 // fromTask ...
 func (p *ExampleProcess) fromTask() {
-	el := p.tenantProcess().GetSequenceFlow(1)
-	el.SetID("flow", p.FromTenantTask.Suffix)
-	el.SetSourceRef("activity", p.TenantTask.Suffix)
-	el.SetTargetRef("endevent", p.TenantEndEvent.Suffix)
+	el := p.process().GetSequenceFlow(1)
+	el.SetID("flow", p.FromTask.Suffix)
+	el.SetSourceRef("activity", p.Task.Suffix)
+	el.SetTargetRef("event", p.EndEvent.Suffix)
 }
 
 // setEndEvent ...
 func (p *ExampleProcess) setEndEvent() {
-	el := p.tenantProcess().GetEndEvent(0)
-	el.SetID("endevent", p.TenantEndEvent.Suffix)
+	el := p.endEvent()
+	el.SetID("event", p.EndEvent.Suffix)
 	el.SetName("End of Process")
 	el.SetIncoming(1)
-	el.GetIncoming(0).SetFlow(p.FromTenantTask.Suffix)
-}
-
-/**** Default Setter/Getter ****/
-
-func (p *ExampleProcess) attributes() {
-	p.Def.SetDefaultAttributes()
-}
-
-func (p ExampleProcess) tenantProcess() *process.Process {
-	return p.Def.GetProcess(0)
-}
-
-func (p ExampleProcess) tenantStartEvent() *elements.StartEvent {
-	return p.tenantProcess().GetStartEvent(0)
-}
-
-func (p ExampleProcess) tenantTask() *tasks.Task {
-	return p.tenantProcess().GetTask(0)
+	el.GetIncoming(0).SetFlow(p.FromTask.Suffix)
 }
 
 /*

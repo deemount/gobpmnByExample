@@ -6,6 +6,8 @@ github.com/deemount/gobpmnBuilder v0.0.0-20240320161626-47d87ec4ca30 h1:/UT38zP7
 github.com/deemount/gobpmnBuilder v0.0.0-20240320161626-47d87ec4ca30/go.mod h1:YzOrtQ/f7YVpvY4qQYXeOvepn9hZWheOzX0D151/HS0=
 github.com/deemount/gobpmnBuilder v0.0.0-20240320164838-72c488e13ddd h1:m9dxAmllDRN5NXsoeV67jRffUsudzJY4XYXojcuvknU=
 github.com/deemount/gobpmnBuilder v0.0.0-20240320164838-72c488e13ddd/go.mod h1:YzOrtQ/f7YVpvY4qQYXeOvepn9hZWheOzX0D151/HS0=
+github.com/deemount/gobpmnBuilder v0.0.0-20240320171817-dc8e1e67b207 h1:YXfWJTJXw/jE6a/M4DKpJ4b7v05GZRtj1ZXdUoxa7Zo=
+github.com/deemount/gobpmnBuilder v0.0.0-20240320171817-dc8e1e67b207/go.mod h1:YzOrtQ/f7YVpvY4qQYXeOvepn9hZWheOzX0D151/HS0=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040 h1:vMsKGBWBsdy2UEDaOO+yCG4RLjYVyoLNARopS8o1/XM=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040/go.mod h1:gtlVIb4tlWVLxCZmme7ORdXFpbeVajRXKCI4KtaQ0l0=
 github.com/deemount/gobpmnHash v0.1.0-alpha h1:8v5cZ+y8J0JZ48RupspRGqB174M/GWSt1Q6USaK1jpA=

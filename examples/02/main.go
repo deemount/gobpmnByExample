@@ -174,7 +174,7 @@ func (p *ExampleProcess) setEndEvent() {
 func main() {
 
 	exampleProcess := New().Build().Call()
-	builder := gobpmn_builder.New(gobpmn_builder.WithCounter())
+	builder := gobpmn_builder.New(gobpmn_builder.WithPath("files/bpmn2", "files/json2"), gobpmn_builder.WithCounter("files/bpmn2"))
 	builder.SetDefinitionsByArg(exampleProcess)
 	builder.Build()
 

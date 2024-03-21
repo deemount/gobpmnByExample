@@ -1,7 +1,9 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/deemount/gobpmnBuilder v0.0.0-20240320174256-c67c6764aa93 h1:Uc3vdg67CuSfeCza7RSelJCpIDtZ7kNR0kpnttmWo3Q=
-github.com/deemount/gobpmnBuilder v0.0.0-20240320174256-c67c6764aa93/go.mod h1:YzOrtQ/f7YVpvY4qQYXeOvepn9hZWheOzX0D151/HS0=
+github.com/deemount/gobpmnBuilder v0.0.0-20240320200115-6cdba92bcaaa h1:C7hTYfj8j/eqOQpK83RiEeY9oX+qqt9CmGIgC07F/sg=
+github.com/deemount/gobpmnBuilder v0.0.0-20240320200115-6cdba92bcaaa/go.mod h1:YzOrtQ/f7YVpvY4qQYXeOvepn9hZWheOzX0D151/HS0=
+github.com/deemount/gobpmnBuilder v0.0.0-20240320200805-8a3f0860ac52 h1:8BUt3KlUcZwplhfmiHpxrJQTWs2E77e/s0skv2wMiTw=
+github.com/deemount/gobpmnBuilder v0.0.0-20240320200805-8a3f0860ac52/go.mod h1:YzOrtQ/f7YVpvY4qQYXeOvepn9hZWheOzX0D151/HS0=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040 h1:vMsKGBWBsdy2UEDaOO+yCG4RLjYVyoLNARopS8o1/XM=
 github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040/go.mod h1:gtlVIb4tlWVLxCZmme7ORdXFpbeVajRXKCI4KtaQ0l0=
 github.com/deemount/gobpmnHash v0.1.0-alpha h1:8v5cZ+y8J0JZ48RupspRGqB174M/GWSt1Q6USaK1jpA=
@@ -14,8 +16,6 @@ github.com/deemount/gobpmnTypes v0.0.0-20240315111519-43046016ad9f h1:0gux6KtY8X
 github.com/deemount/gobpmnTypes v0.0.0-20240315111519-43046016ad9f/go.mod h1:Dw7Jo8/vr0DzNHNMnbwQu0JSMWm2klNdo00rcxHCzJs=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/stretchr/objx v0.5.2 h1:xuMeJ0Sdp5ZMRXx/aWO6RZxdr3beISkG5/G/aIRr3pY=
-github.com/stretchr/objx v0.5.2/go.mod h1:FRsXN1f5AsAjCGJKqEizvkpNtU+EGNCLh3NxZ/8L+MA=
 github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=

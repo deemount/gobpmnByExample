@@ -174,7 +174,9 @@ func (p *ExampleProcess) setEndEvent() {
 func main() {
 
 	exampleProcess := New().Build().Call()
-	builder, err := gobpmn_builder.New(gobpmn_builder.WithPath("files/bpmn2", "files/json2"), gobpmn_builder.WithCounter("files/bpmn2"))
+	builder, err := gobpmn_builder.New(
+		gobpmn_builder.WithPath(),
+		gobpmn_builder.WithCounter())
 	if err != nil {
 		panic(err)
 	}

@@ -115,7 +115,10 @@ func (p ExampleProcess) tenantStartEvent() *elements.StartEvent {
 func main() {
 
 	exampleProcess := New().Build().Call()
-	builder := gobpmn_builder.New()
+	builder, err := gobpmn_builder.New()
+	if err != nil {
+		panic(err)
+	}
 	builder.SetDefinitionsByArg(exampleProcess)
 	builder.Build()
 

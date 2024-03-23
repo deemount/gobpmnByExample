@@ -1,9 +1,9 @@
 module github.com/deemount/gobpmnByExample/examples/02
 
-go 1.21.7
+go 1.22
 
 require (
-	github.com/deemount/gobpmnBuilder v0.0.0-20240321090245-2fa1a1fa22cf
+	github.com/deemount/gobpmnBuilder v0.1.0-alpha
 	github.com/deemount/gobpmnCounter v0.0.0-20240312102840-227373d7f040
 	github.com/deemount/gobpmnHash v0.1.0-alpha
 	github.com/deemount/gobpmnModels v0.0.0-20240316085912-7831ff39ffa4

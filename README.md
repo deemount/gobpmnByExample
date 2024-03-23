@@ -18,6 +18,7 @@ You can also test the idea behind it directly. Simply follow the link to the lab
 + [gobpmnModels](https://github.com/deemount/gobpmnModels)
 + [gobpmnCamunda](https://github.com/deemount/gobpmnCamunda)
 + [gobpmnDiagram](https://github.com/deemount/gobpmnDiagram)
++ [gobpmnReader](https://github.com/deemount/gobpmnReader)
 + [gobpmnBuilder](https://github.com/deemount/gobpmnBuilder)
 + [gobpmnCounter](https://github.com/deemount/gobpmnCounter)
 + [gobpmnHash](https://github.com/deemount/gobpmnHash)

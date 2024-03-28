@@ -189,6 +189,7 @@ func main() {
 
 	file := builder.GetCurrentlyCreatedFile()
 
+	// Read the file and unmarshal the data
 	data, err := reader.ReadFileAndUnmarshal(file)
 	if err != nil {
 		panic(err)

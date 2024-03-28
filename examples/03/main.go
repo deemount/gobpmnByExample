@@ -187,13 +187,13 @@ func main() {
 	builder.SetDefinitionsByArg(exampleProcess)
 	builder.Build()
 
-	file := builder.GetCurrentlyCreatedFile()
+	file := builder.GetCurrentlyCreatedFilename()
 
 	// Read the file and unmarshal the data
-	data, err := reader.ReadFileAndUnmarshal(file)
+	data, err := reader.ReadFileAndUnmarshal("files/bpmn/" + file + ".bpmn")
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("%+v", data)
+	log.Printf("%#v", data)
 
 }
